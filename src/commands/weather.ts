@@ -2,6 +2,7 @@ import { ApplicationCommandRegistry, Command, RegisterBehavior } from "@sapphire
 import { WEATHER_KEY } from "../config";
 import { CommandInteraction, MessageEmbed } from "discord.js";
 import { fetch } from "../lib/utils/fetch";
+import { engToBos } from "../lib/utils/weatherstuff";
 
 
 export default class WeatherCommand extends Command {
@@ -30,7 +31,7 @@ export default class WeatherCommand extends Command {
 
         const embed = new MessageEmbed()
         .setTitle(`Weather for ${weather.location.name} (${weather.location.country})`)
-        .setAuthor({name: `Conditions: ${weather.current.condition.text}`, iconURL: `https:${weather.current.condition.icon}`})
+        .setAuthor({name: `Conditions: ${engToBos(weather.current.condition.code, weather.current.is_day)}`, iconURL: `https:${weather.current.condition.icon}`})
         .addField("Temperature", `${weather.current.temp_f}°F / ${weather.current.temp_c}°C\nFeels like: ${weather.current.feelslike_f}°F / ${weather.current.feelslike_c}°C`)
         .addField("Wind", `${weather.current.wind_mph} mph / ${weather.current.wind_kph} kph\nDirection: ${weather.current.wind_dir}`)
         .addField("Humidity", `${weather.current.humidity}%`)
@@ -81,6 +82,7 @@ interface WeatherResult {
         condition: {
             text: string;
             icon: string;
+            code: number;
         };
         wind_kph: number;
         wind_mph: number;

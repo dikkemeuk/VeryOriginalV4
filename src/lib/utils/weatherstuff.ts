@@ -296,7 +296,7 @@ const WEATHER_CODES: WeatherCode[] = [
 	}
 ]
 
-function engToBos(code: number, isDay: boolean): string {
+export function engToBos(code: number, isDay: boolean): string {
     const entry = WEATHER_CODES.find(x => x.code === code);
     if (entry) {
         return isDay ? entry.day : entry.night;
