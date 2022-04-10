@@ -3,7 +3,6 @@ import { DurationFormatter } from "@sapphire/time-utilities";
 import { CommandInteraction, Message, MessageEmbed } from "discord.js";
 import type { Track } from "erela.js";
 import { filledBar } from "../lib/utils/music";
-import { GUILD_IDS } from "../config";
 import type { SlashCommandBuilder } from "@discordjs/builders";
 import SendDeprecationMessage from "../lib/utils/SendSlashMessage";
 
@@ -50,7 +49,7 @@ export default class MusicCommand extends Command {
 					builder //
 						.setName(this.name)
 						.setDescription(this.description)		
-				,{ guildIds: GUILD_IDS, idHints: ["949320325093556244", "949320326418923520"], behaviorWhenNotIdentical: RegisterBehavior.Overwrite }
+				,{ behaviorWhenNotIdentical: RegisterBehavior.Overwrite }
 			);
     }
 }

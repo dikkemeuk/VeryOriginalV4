@@ -1,6 +1,5 @@
 import { ApplicationCommandRegistry, Command, RegisterBehavior } from "@sapphire/framework";
 import { CommandInteraction, Message, MessageEmbed } from "discord.js";
-import { GUILD_IDS } from "../config";
 import type { SlashCommandBuilder } from "@discordjs/builders";
 import SendDeprecationMessage from "../lib/utils/SendSlashMessage";
 import type { gameservers } from "@prisma/client";
@@ -135,7 +134,7 @@ export default class MusicCommand extends Command {
 						.setName(this.name)
 						.setDescription(this.description)
                         .addStringOption(opt => opt.setName("server").setDescription("The server to view stats for"))		
-				,{ guildIds: GUILD_IDS, behaviorWhenNotIdentical: RegisterBehavior.Overwrite }
+				,{ behaviorWhenNotIdentical: RegisterBehavior.Overwrite }
 			);
     }
 }

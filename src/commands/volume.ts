@@ -43,7 +43,7 @@ export default class MusicCommand extends Command {
                         .setDescription("The volume to set the bot to.")
                         .setMinValue(0)
                         .setMaxValue(100))		
-				,{ behaviorWhenNotIdentical: RegisterBehavior.Overwrite, idHints: ["962447655215169666"] }
+				,{ behaviorWhenNotIdentical: RegisterBehavior.Overwrite }
 			);
     }
 }

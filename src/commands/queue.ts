@@ -57,7 +57,7 @@ export default class MusicCommand extends Command {
 					builder //
 						.setName(this.name)
 						.setDescription(this.description)		
-				,{ behaviorWhenNotIdentical: RegisterBehavior.Overwrite, idHints: ["962447654338584616"] }
+				,{ behaviorWhenNotIdentical: RegisterBehavior.Overwrite }
 			);
     }
 }

@@ -54,7 +54,7 @@ export default class WeatherCommand extends Command {
 						.addStringOption(opt => opt.setName("location")
                         .setRequired(true)
                         .setDescription("The location to get the weather for.")),
-				{ behaviorWhenNotIdentical: RegisterBehavior.Overwrite, idHints: ["962447656347635732"] }
+				{ behaviorWhenNotIdentical: RegisterBehavior.Overwrite }
 			);
     }
 

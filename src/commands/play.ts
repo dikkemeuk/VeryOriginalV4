@@ -84,7 +84,7 @@ export default class MusicCommand extends Command {
 						.setName(this.name)
 						.setDescription(this.description)
                         .addStringOption(opt => opt.setName("song").setRequired(true).setDescription("The song to play."))		
-				,{ behaviorWhenNotIdentical: RegisterBehavior.Overwrite, idHints: ["962447653323559012"] }
+				,{ behaviorWhenNotIdentical: RegisterBehavior.Overwrite }
 			);
     }
 }
