@@ -36,6 +36,8 @@ export default class AddServerCommand extends Command {
         return this.removeServer(interaction);
       case "list":
         return this.listServers(interaction);
+      default:
+        return this.listServers(interaction);
     }
   }
 
@@ -45,7 +47,7 @@ export default class AddServerCommand extends Command {
     });
 
     if (servers.length === 0) {
-      return interaction.reply("There are no servers in the tracking list.");
+      return interaction.editReply("There are no servers in the tracking list.");
     }
 
     const embed = new MessageEmbed()
@@ -81,7 +83,7 @@ export default class AddServerCommand extends Command {
     };
 
     const exists = await this.container.prisma.gameservers.findFirst({
-      where: { name },
+      where: { name, guildID: interaction.guildId! },
     });
 
     if (exists) {

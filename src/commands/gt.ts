@@ -63,7 +63,7 @@ export default class MusicCommand extends Command {
           //@ts-ignore
           embed.addField(
             `**${name}**`, 
-            `frags!: ${entry.raw!.frags}\nPing: ${entry.raw!.ping}`,
+            `Score: ${entry.raw!.frags}\nPing: ${entry.raw!.ping}`,
             true
           );
         });
@@ -78,7 +78,7 @@ export default class MusicCommand extends Command {
       );
       //@ts-ignore
       embed.addField(
-        "**frags!:**", //@ts-expect-error
+        "**Score:**", //@ts-expect-error
         result.players.sort((a, b) => b.raw!.frags! - a.raw.frags!).map((x) => x.raw.frags!),
         true
       );
@@ -102,9 +102,9 @@ export default class MusicCommand extends Command {
 
     private async getProperServer(interaction: CommandInteraction) {
         const param = interaction.options.getString("server");
-        const servers = await this.container.prisma.gameservers.findMany({where: {guildID: interaction.guildId!}})
+        const servers = await this.container.prisma.gameservers.findMany({where: {guildID: interaction.guildId!}}).catch((r) => console.log(r))
 
-        if(servers.length === 0) {
+        if(!servers || servers.length === 0) {
             interaction.reply("There are no servers in the tracking list.");
             return undefined
         }
