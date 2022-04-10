@@ -13,7 +13,7 @@ const startLavalink = async () => {
 }
 
 const start = async () => {
-    const lavalink = await startLavalink()
+    await startLavalink()
     await sleep(5000)
     const bot = exec("node .", (err, stdout, stderr) => {
         if (err) {

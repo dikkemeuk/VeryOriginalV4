@@ -3,6 +3,7 @@ import { WEATHER_KEY } from "../config";
 import { CommandInteraction, MessageEmbed } from "discord.js";
 import { fetch } from "../lib/utils/fetch";
 import { engToBos } from "../lib/utils/weatherstuff";
+import type { SlashCommandBuilder } from "@discordjs/builders";
 
 
 export default class WeatherCommand extends Command {
@@ -46,14 +47,14 @@ export default class WeatherCommand extends Command {
     public registerApplicationCommands(registry: ApplicationCommandRegistry) {
 		registry //
 			.registerChatInputCommand(
-				(builder) =>
+				(builder: SlashCommandBuilder) =>
 					builder //
 						.setName(this.name)
 						.setDescription(this.description)
 						.addStringOption(opt => opt.setName("location")
                         .setRequired(true)
                         .setDescription("The location to get the weather for.")),
-				{ guildIds: ["633728899808886814"], idHints: ["947941766882025492"], behaviorWhenNotIdentical: RegisterBehavior.Overwrite }
+				{ behaviorWhenNotIdentical: RegisterBehavior.Overwrite, idHints: ["962447656347635732"] }
 			);
     }
 

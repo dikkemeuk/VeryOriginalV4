@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model gameservers {
+  guildID  String
+  name     String
+  game     String
+  ip       String
+  port     Int
+  showPing Boolean @default(false)
+  uniqueID Int     @unique @default(autoincrement())
+}

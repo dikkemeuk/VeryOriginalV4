@@ -1,10 +1,17 @@
 {
 	"extends": "@sapphire/ts-config",
 	"compilerOptions": {
-		"target": "ESNext",
-		"noEmitHelpers": true,
-		"importHelpers": true,
+		
+        "module": "commonjs",
+        "target": "es2018",
 		"removeComments": true,
-		"importsNotUsedAsValues": "remove"
+		"lib": [
+            "ESNext",
+            "ESNext.Array",
+            "ESNext.AsyncIterable",
+            "ESNext.Intl",
+            "ESNext.Symbol",
+            "DOM"
+        ],
 	}
 }
